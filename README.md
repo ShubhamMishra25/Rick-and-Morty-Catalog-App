@@ -1,54 +1,66 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# Rick and Morty Catalog App
 
-## Get started
+A modern Expo/React Native app for browsing Rick and Morty characters, episodes, and locations. Built with best practices for theming, navigation, and code organization.
 
-1. Install dependencies
+## Features
+- Dark theme with centralized color palette
+- Drawer and stack navigation (custom drawer, back/hamburger logic)
+- Character, episode, and location detail screens
+- Reusable components (CharacterItem, EpisodeItem, InfoItem, etc.)
+- Data fetching from the Rick and Morty API
+- Loading and error states
+- Responsive, clean UI
 
-   ```bash
-   npm install
-   ```
+## Getting Started
 
-2. Start the app
+### Prerequisites
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### Installation
 ```bash
-npm run reset-project
+# Install dependencies
+yarn install
+# or
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Running the App
+```bash
+# Start the Expo development server
+expo start
+```
+Scan the QR code with the Expo Go app or run on an emulator/simulator.
 
-## Learn more
+### Clearing Cache (if you see stale assets or theme issues)
+```bash
+expo start -c
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Project Structure
+```
+app/
+  _layout.tsx           # Root navigation
+  characters/           # Character list and detail screens
+  episodes/             # Episode list and detail screens
+  locations/            # Location list and detail screens
+components/             # Reusable UI components
+constants/Colors.ts     # Centralized color palette
+services/               # API service files
+assets/                 # Fonts and images
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Code Quality
+- All colors and backgrounds use the palette in `constants/Colors.ts`.
+- Navigation logic is separated and clean.
+- Data fetching is handled in `services/`.
+- Components are typed and reusable.
+- Loading and error states are handled with `LoadingContainer`.
 
-## Join the community
+## API
+- [Rick and Morty API](https://rickandmortyapi.com/)
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-
-## UI Inspiration
-
-This project was inspired by the UI from [Coder-Mehedi/Rick-and-Morty](https://github.com/Coder-Mehedi/Rick-and-Morty).
+## License
+MIT
