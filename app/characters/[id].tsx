@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import InfoItem from "@/components/InfoItem";
 
-type Character = {
+interface Character {
   id: number;
   name: string;
   image: string;

@@ -4,7 +4,7 @@ import CharacterItem from "@/components/CharacterItem";
 import React, { useState, useEffect } from "react";
 import { fetchCharacters } from "@/services/characterApi";
 
-export type Character = {
+export interface Character {
   id: number;
   name: string;
   episode: string[];
@@ -19,6 +19,7 @@ export default function Characters() {
     const fetchData = async () => {
       try {
         const res = await fetchCharacters();
+        console.log("Fetched characters:", res.results);
         setData(res.results);
       } catch (error) {
         console.error("Failed to fetch characters:", error);
