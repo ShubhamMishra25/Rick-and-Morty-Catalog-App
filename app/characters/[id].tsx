@@ -5,6 +5,7 @@ import { useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import InfoItem from "@/components/InfoItem";
+import LoadingContainer from "@/components/LoadingContainer";
 
 interface Character {
   id: number;
@@ -19,7 +20,7 @@ interface Character {
   origin: {
     name: string;
   };
-};
+}
 
 export default function CharacterDetailsScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -42,11 +43,7 @@ export default function CharacterDetailsScreen() {
   }, [id]);
 
   if (loading) {
-    return (
-      <View style={styles.container}>
-        <Text>Loading...</Text>
-      </View>
-    );
+    return <LoadingContainer />;
   }
 
   const infoToShow = [

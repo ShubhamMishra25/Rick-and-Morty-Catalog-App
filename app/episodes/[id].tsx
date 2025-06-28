@@ -1,9 +1,10 @@
+import InfoItem from "@/components/InfoItem";
+import LoadingContainer from "@/components/LoadingContainer";
 import { Colors } from "@/constants/Colors";
 import { fetchEpisodeById } from "@/services/episodeApi";
 import { useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import InfoItem from "@/components/InfoItem";
+import { StyleSheet, View, Text } from "react-native";
 
 interface Episode {
   id: number;
@@ -34,11 +35,7 @@ export default function EpisodeDetailsScreen() {
   }, [id]);
 
   if (loading) {
-    return (
-      <View style={styles.container}>
-        <Text>Loading...</Text>
-      </View>
-    );
+    return <LoadingContainer />;
   }
 
   const infoToShow = [

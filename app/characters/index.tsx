@@ -4,6 +4,7 @@ import CharacterItem from "@/components/CharacterItem";
 import React, { useState, useEffect } from "react";
 import { fetchCharacters } from "@/services/characterApi";
 
+
 export interface Character {
   id: number;
   name: string;
