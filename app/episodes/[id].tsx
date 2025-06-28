@@ -76,20 +76,6 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: Colors.primaryBackground,
   },
-  name: {
-    fontSize: 30,
-    fontWeight: "bold",
-    color: Colors.screenHead,
-  },
-  imageContainer: {
-    padding: 20,
-    alignItems: "center",
-  },
-  characterImage: {
-    width: 250,
-    height: 200,
-    borderRadius: 10,
-  },
   subtext: {
     fontSize: 20,
     color: Colors.separator,
