@@ -50,7 +50,7 @@ export default function RootLayout() {
           }}
         />
       </Drawer>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </GestureHandlerRootView>
   );
 }
