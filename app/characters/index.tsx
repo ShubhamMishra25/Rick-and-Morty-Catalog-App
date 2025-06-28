@@ -1,7 +1,8 @@
 import { Colors } from "@/constants/Colors";
-import React from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { Text, View, StyleSheet, FlatList } from "react-native";
 import CharacterItem from "@/components/CharacterItem";
+import React, { useState, useEffect } from "react";
+import { fetchCharacters } from "@/services/characterApi";
 
 export type Character = {
   id: number;
@@ -10,49 +11,39 @@ export type Character = {
   image: string;
 };
 
-const DATA: Character[] = [
-  {
-    id: 1,
-    name: "Rick Sanchez",
-    episode: ["1", "2", "3"],
-    image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-  },
-  {
-    id: 2,
-    name: "Morty Smith",
-    episode: ["1", "2", "3"],
-    image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-  },
-  {
-    id: 3,
-    name: "Summer Smith",
-    episode: ["1", "2", "3"],
-    image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
-  },
-];
-
-export type ItemProps = {
-  item: Character;
-  onPress: () => void;
-};
-
-// const Item = ({ item, onPress }: ItemProps) => (
-//   <View style={{ padding: 20, borderBottomWidth: 1, borderColor: "#ccc" }}>
-//     <Text style={{ fontSize: 18 }} onPress={onPress}>
-//       {item.name}
-//     </Text>
-//   </View>
-// );
-
 export default function Characters() {
+  const [data, setData] = useState<Character[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetchCharacters();
+        setData(res.results);
+      } catch (error) {
+        console.error("Failed to fetch characters:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={DATA}
+        data={data}
         renderItem={({ item }) => (
           <CharacterItem
             item={item}
-            onPress={() => console.log(`Selected character: ${item.name}`)}
           />
         )}
         keyExtractor={(item) => item.id.toString()}
@@ -61,7 +52,6 @@ export default function Characters() {
             style={{
               height: 1,
               backgroundColor: Colors.secondaryBackground, // use your color palette
-              
             }}
           />
         )}

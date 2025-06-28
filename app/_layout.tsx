@@ -19,8 +19,7 @@ export default function RootLayout() {
           },
           drawerActiveTintColor: Colors.focused,
           drawerInactiveTintColor: Colors.inactive,
-          headerStyle: { backgroundColor: Colors.secondaryBackground },
-          headerTintColor: Colors.focused,
+          headerShown: false,
         }}
       >
         <Drawer.Screen
@@ -30,7 +29,6 @@ export default function RootLayout() {
             drawerIcon: ({ color, size }) => (
               <FontAwesome5 name="id-card" size={size} color={color} />
             ),
-            headerTitle: "Characters",
           }}
         />
         <Drawer.Screen
@@ -40,7 +38,6 @@ export default function RootLayout() {
             drawerIcon: ({ color, size }) => (
               <FontAwesome5 name="tv" size={size} color={color} />
             ),
-            headerTitle: "Episodes",
           }}
         />
         <Drawer.Screen
@@ -50,7 +47,6 @@ export default function RootLayout() {
             drawerIcon: ({ color, size }) => (
               <FontAwesome5 name="map" size={size} color={color} />
             ),
-            headerTitle: "Locations",
           }}
         />
       </Drawer>
